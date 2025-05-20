@@ -1,3 +1,5 @@
+import ArticleModal from "./ArticleModal";
+import { useState } from "react";
 import {
   Card,
   CardMedia,
@@ -9,11 +11,21 @@ import {
 } from "@mui/material";
 
 function ArticleCard({ article }) {
+  const [readMoreClicked, setReadMoreClicked] = useState(false);
+
+  const handleClick = () => {
+    setReadMoreClicked(true)
+  }
+
+  const handleClose = () => {
+    setReadMoreClicked(false)
+  }
+
   return (
     <Card>
       <CardContent>
         <Typography variant="h6">{article.title}</Typography>
-        <Typography variant="p">Author: {article.author}</Typography>
+        <Typography variant="body1">Author: {article.author}</Typography>
       </CardContent>
       <Box>
         <CardMedia
@@ -24,8 +36,9 @@ function ArticleCard({ article }) {
         />
       </Box>
       <CardActions sx={{ justifyContent: "center" }}>
-        <Button size="large">Read More</Button>
+        <Button onClick={handleClick} size="large">Read More</Button>
       </CardActions>
+      {readMoreClicked ? <ArticleModal onClose={handleClose} articleId={article.article_id}/> : null}
     </Card>
   );
 }
