@@ -3,6 +3,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import CommentSection from "./CommentSection";
+import VotingSection from "./VotingSection";
 
 function ArticleModal({ onClose, articleId }) {
   const [article, setArticle] = useState({});
@@ -52,12 +53,6 @@ function ArticleModal({ onClose, articleId }) {
           {article.body}
         </Typography>
         {/* <Typography variant="body2" gutterBottom>{article.created_at}</Typography> */}
-        <Typography variant="body2" gutterBottom>
-          Votes: {article.votes}
-        </Typography>
-        <Typography variant="body2" gutterBottom>
-          Comments: {article.comment_count}
-        </Typography>
         <Box>
           <CardMedia
             component="img"
@@ -66,6 +61,10 @@ function ArticleModal({ onClose, articleId }) {
             sx={{ width: "100%" }}
           />
         </Box>
+        <VotingSection articleId={articleId} initialVotes={article.votes}/>
+        <Typography variant="body2" gutterBottom>
+          Comments: {article.comment_count}
+        </Typography>
         <CommentSection articleId={articleId} />
       </Box>
     </Modal>
