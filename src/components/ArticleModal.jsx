@@ -2,6 +2,7 @@ import { Box, Typography, Modal, CardMedia, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import CommentSection from "./CommentSection";
 
 function ArticleModal({ onClose, articleId }) {
   const [article, setArticle] = useState({});
@@ -18,16 +19,17 @@ function ArticleModal({ onClose, articleId }) {
   }, [articleId]);
 
   const style = {
-    position: "absolute",
+    position: "fixed",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     bgcolor: "grey",
-    border: "2px solid #000",
     p: 4,
     width: "90%",
     maxWidth: 600,
     textAlign: "center",
+    maxHeight: "90vh",
+    overflowY: "auto",
   };
 
   return (
@@ -64,6 +66,7 @@ function ArticleModal({ onClose, articleId }) {
             sx={{ width: "100%" }}
           />
         </Box>
+        <CommentSection articleId={articleId} />
       </Box>
     </Modal>
   );
