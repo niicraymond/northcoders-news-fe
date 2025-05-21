@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Paper, Typography, Box } from "@mui/material";
+import AddComment from "./AddComment";
 
 function CommentSection({ articleId }) {
   const [comments, setComments] = useState([]);
@@ -14,6 +15,10 @@ function CommentSection({ articleId }) {
         setComments(data.comments);
       });
   }, [articleId]);
+
+  const handleNewComment = (newComment) => {
+    setComments((prev) => [newComment, ...prev])
+  };
 
   return (
     <Box
@@ -33,8 +38,8 @@ function CommentSection({ articleId }) {
           </Typography>
         </Paper>
       ))}
+      <AddComment articleId={articleId} handleNewComment={handleNewComment}/>
     </Box>
   );
 }
-
 export default CommentSection;
