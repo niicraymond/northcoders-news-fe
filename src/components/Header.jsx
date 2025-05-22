@@ -1,4 +1,7 @@
-import { Box } from "@mui/material";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
+import { Box, Button } from "@mui/material";
 import SelectTopics from "./SelectTopics";
 import FilterArticles from "./FilterArticles";
 
@@ -10,13 +13,25 @@ function Header({
   onSortChange,
   onOrderChange,
 }) {
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleUserClick = () => {
+    if (user) {
+      setUser(null);
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
-    <Box component="header"
+    <Box
+      component="header"
       sx={{
         bgcolor: "white",
         display: "flex",
         alignItems: "space-between",
-        justifyContent: "space-between", 
+        justifyContent: "space-between",
         p: 2,
       }}
     >
@@ -32,6 +47,9 @@ function Header({
         order={order}
         sx={{ display: "flex", gap: 2, minWidth: 480 }}
       />
+      <Button onClick={handleUserClick} variant="contained">
+        {user ? "Sign Out" : "Sign In"}
+      </Button>
     </Box>
   );
 }
