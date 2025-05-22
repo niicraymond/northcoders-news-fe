@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Box, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
-function Header({selectedTopic, onTopicChange}) {
+function SelectTopics({ selectedTopic, onTopicChange, sx }) {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
@@ -14,11 +14,11 @@ function Header({selectedTopic, onTopicChange}) {
   }, []);
 
   const handleChange = (e) => {
-    onTopicChange(e.target.value)
-  }
+    onTopicChange(e.target.value);
+  };
 
   return (
-    <Box sx={{bgcolor: "white"}}>
+    <Box sx={sx}>
       <FormControl fullWidth variant="outlined">
         <InputLabel id="topic-label">Select Topic</InputLabel>
         <Select
@@ -38,4 +38,4 @@ function Header({selectedTopic, onTopicChange}) {
   );
 }
 
-export default Header;
+export default SelectTopics;
