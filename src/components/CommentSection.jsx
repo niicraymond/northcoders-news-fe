@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect , useContext} from "react";
 import { Paper, Typography, Box, Button } from "@mui/material";
 import AddComment from "./AddComment";
-
-const TemporyUser = "grumpy19";
+import { UserContext } from "../contexts/UserContext";
 
 function CommentSection({ articleId }) {
+  const {user} = useContext(UserContext)
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ function CommentSection({ articleId }) {
           <Typography variant="caption" color="text.secondary">
             — {comment.author}
           </Typography>
-          {comment.author === TemporyUser && (
+          {user && comment.author === user && (
             <Button
               size="small"
               color="error"
@@ -59,7 +59,14 @@ function CommentSection({ articleId }) {
           )}
         </Paper>
       ))}
-      <AddComment articleId={articleId} handleNewComment={handleNewComment} />
+
+      {user ? (
+        <AddComment articleId={articleId} handleNewComment={handleNewComment} />
+      ) : (
+        <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+          Sign in to add a comment.
+        </Typography>
+      )}
     </Box>
   );
 }

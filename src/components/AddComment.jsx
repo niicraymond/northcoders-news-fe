@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { Box, Button, TextField } from "@mui/material";
+import { UserContext } from "../contexts/UserContext";
 
 function AddComment({ articleId, handleNewComment }) {
+  const { user } = useContext(UserContext)
   const [comment, setComment] = useState("");
 
   const handleInput = (e) => {
@@ -13,12 +15,13 @@ function AddComment({ articleId, handleNewComment }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!user) return;
 
     axios
       .post(
         `https://northcoders-news-be-s4h6.onrender.com/api/articles/${articleId}/comments`,
         {
-          username: "grumpy19",
+          username: user,
           body: comment,
         }
       )
