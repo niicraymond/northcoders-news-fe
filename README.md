@@ -1,12 +1,58 @@
-# React + Vite
+# Northcoders News Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React application for interacting with the Northcoders News API. Users can browse articles by topic, sort and filter them, read article content, view and manage comments, and vote on articles. 
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- View a list of all articles
+- Filter articles by topic
+- Sort articles by votes, comments, or date
+- Vote on articles (upvote/downvote)
+- View individual articles with full content
+- Post and delete comments (user-specific)
+- Login/logout functionality
+- Mobile-friendly responsive layout
+- Basic error handling and loading indicators
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React (with hooks)
+- React Router
+- Context API for global user state
+- Axios for HTTP requests
+- MUI (Material UI) for styling
+
+## Setup Instructions
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/your-username/northcoders-news-fe.git
+   cd northcoders-news-fe
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open in browser:
+
+   Navigate to `http://localhost:5173`
+
+## API Reference
+
+This frontend connects to the live backend, You can find endpoints here:
+
+https://northcoders-news-be-s4h6.onrender.com/api
+
+## Author
+
+Developed by Nicole Raymond.
