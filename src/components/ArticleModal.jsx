@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import CommentSection from "./CommentSection";
 import VotingSection from "./VotingSection";
+import ErrorDisplay from "./ErrorDisplay";
 
 function ArticleModal({ onClose, articleId }) {
   const [article, setArticle] = useState({});
@@ -14,7 +15,6 @@ function ArticleModal({ onClose, articleId }) {
         `https://northcoders-news-be-s4h6.onrender.com/api/articles/${articleId}`
       )
       .then(({ data }) => {
-        console.log(data.article);
         setArticle(data.article);
       });
   }, [articleId]);
@@ -33,11 +33,12 @@ function ArticleModal({ onClose, articleId }) {
     maxHeight: "90vh",
     overflowY: "auto",
     outline: "none",
-    textAlign: 'center' 
+    textAlign: "center",
   };
 
   return (
     <Modal open={true}>
+      {}
       <Box sx={style}>
         <IconButton
           onClick={onClose}
@@ -46,13 +47,13 @@ function ArticleModal({ onClose, articleId }) {
         >
           <CloseIcon />
         </IconButton>
-        <Typography variant="h6" gutterBottom sx={{color: "black"}}>
+        <Typography variant="h6" gutterBottom sx={{ color: "black" }}>
           {article.title}
         </Typography>
-        <Typography variant="body2" gutterBottom sx={{color: "black"}}>
+        <Typography variant="body2" gutterBottom sx={{ color: "black" }}>
           Author: {article.author} Topic: {article.topic}
         </Typography>
-        <Typography variant="body1" gutterBottom sx={{color: "black"}}>
+        <Typography variant="body1" gutterBottom sx={{ color: "black" }}>
           {article.body}
         </Typography>
         {/* <Typography variant="body2" gutterBottom>{article.created_at}</Typography> */}
@@ -70,7 +71,7 @@ function ArticleModal({ onClose, articleId }) {
           />
         </Box>
         <VotingSection articleId={articleId} initialVotes={article.votes} />
-        <Typography variant="body2" gutterBottom sx={{color: "black"}}>
+        <Typography variant="body2" gutterBottom sx={{ color: "black" }}>
           Comments: {article.comment_count}
         </Typography>
         <CommentSection articleId={articleId} />

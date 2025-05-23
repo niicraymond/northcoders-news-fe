@@ -27,6 +27,7 @@ function Homepage() {
         onSortChange={setSortBy}
         onOrderChange={setOrder}
       />
+      
       <ArticleList articles={articles} />
     </>
   );
