@@ -25,12 +25,15 @@ function ArticleModal({ onClose, articleId }) {
     left: "50%",
     transform: "translate(-50%, -50%)",
     bgcolor: "grey",
-    p: 4,
+    p: 3,
     width: "90%",
     maxWidth: 600,
-    textAlign: "center",
+    borderRadius: 2,
+    boxShadow: 24,
     maxHeight: "90vh",
     overflowY: "auto",
+    outline: "none",
+    textAlign: 'center' 
   };
 
   return (
@@ -43,13 +46,13 @@ function ArticleModal({ onClose, articleId }) {
         >
           <CloseIcon />
         </IconButton>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" gutterBottom sx={{color: "black"}}>
           {article.title}
         </Typography>
-        <Typography variant="body2" gutterBottom>
+        <Typography variant="body2" gutterBottom sx={{color: "black"}}>
           Author: {article.author} Topic: {article.topic}
         </Typography>
-        <Typography variant="body1" gutterBottom>
+        <Typography variant="body1" gutterBottom sx={{color: "black"}}>
           {article.body}
         </Typography>
         {/* <Typography variant="body2" gutterBottom>{article.created_at}</Typography> */}
@@ -58,11 +61,16 @@ function ArticleModal({ onClose, articleId }) {
             component="img"
             image={article.article_img_url}
             title={article.title}
-            sx={{ width: "100%" }}
+            sx={{
+              width: "100%",
+              maxHeight: 300,
+              objectFit: "cover",
+              borderRadius: 1,
+            }}
           />
         </Box>
-        <VotingSection articleId={articleId} initialVotes={article.votes}/>
-        <Typography variant="body2" gutterBottom>
+        <VotingSection articleId={articleId} initialVotes={article.votes} />
+        <Typography variant="body2" gutterBottom sx={{color: "black"}}>
           Comments: {article.comment_count}
         </Typography>
         <CommentSection articleId={articleId} />
