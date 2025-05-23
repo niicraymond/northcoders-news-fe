@@ -11,7 +11,6 @@ This is a React application for interacting with the Northcoders News API. Users
 - View individual articles with full content
 - Post and delete comments (user-specific)
 - Login/logout functionality
-- Mobile-friendly responsive layout
 - Basic error handling and loading indicators
 
 ## Technologies Used
