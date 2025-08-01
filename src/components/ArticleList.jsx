@@ -19,7 +19,6 @@ function ArticleList({ articles }) {
         textAlign: 'center'
       }}
     >
-      <h2>Articles</h2>
       {articles.map((article) => (
         <ArticleCard key={article.article_id} article={article} />
       ))}
