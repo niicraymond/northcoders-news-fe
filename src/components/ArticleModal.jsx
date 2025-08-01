@@ -24,16 +24,19 @@ function ArticleModal({ onClose, articleId }) {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    bgcolor: "grey",
-    p: 3,
-    width: "90%",
-    maxWidth: 600,
+    bgcolor: "background.paper",
+    p: { xs: 2, sm: 3 },
+    width: "clamp(320px, 90%, 720px)",
+    maxHeight: "85vh",
     borderRadius: 2,
-    boxShadow: 24,
-    maxHeight: "90vh",
+    boxShadow: "0 30px 60px rgba(0,0,0,0.2)",
     overflowY: "auto",
     outline: "none",
-    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    gap: 2,
+    textAlign: "left",
+    color: "text.primary",
   };
 
   return (
@@ -65,8 +68,10 @@ function ArticleModal({ onClose, articleId }) {
             sx={{
               width: "100%",
               maxHeight: 300,
+              aspectRatio: "16/9",
               objectFit: "cover",
-              borderRadius: 1,
+              borderRadius: 1.5,
+              backgroundColor: "rgba(0,0,0,0.04)",
             }}
           />
         </Box>
